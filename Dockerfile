@@ -23,7 +23,7 @@ RUN git clone https://github.com/hyattpd/Prodigal.git
 RUN git clone https://github.com/B-UMMI/chewBBACA.git
 #INSTALL chewBBACA requirements 
 WORKDIR /NGStools/chewBBACA
-RUN pip3 install requirements.txt
+RUN pip3 install -r requirements.txt
 
 WORKDIR /NGStools/Prodigal
 RUN make install
