@@ -40,4 +40,6 @@ ENV PATH="/NGStools/chewBBACA/utils/:$PATH"
 # add clustalw2 to path
 ENV PATH="/NGStools/clustalw-2.1-linux-x86_64-libcppstatic:${PATH}"
 RUN which clustalw2
+#install mafft
+RUN apt-get install -y mafft
 RUN which mafft
