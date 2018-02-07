@@ -8,16 +8,17 @@ RUN apt-get install -y git make python3 python3-pip libatlas-base-dev wget g++ b
 # python3-numpy python3-scipy
 RUN python3 -m pip install --upgrade pip
 
-#GET chewBBACA and Prodigal 
+#GET training files and Prodigal 
 RUN git clone https://github.com/hyattpd/Prodigal.git
-RUN git clone https://github.com/B-UMMI/chewBBACA.git
+
 #INSTALL chewBBACA requirements 
 WORKDIR /NGStools/chewBBACA
-RUN pip3 install -r requirements.txt
+RUN pip3 install biopython plotly SPARQLWrapper chewbbaca
 
 WORKDIR /NGStools/Prodigal
 RUN make install
 WORKDIR /NGStools/
+RUN git clone https://github.com/mickaelsilva/prodigal_training_files
 
 #install mafft and clustalw2 to run schema evaluator
 RUN wget www.clustal.org/download/current/clustalw-2.1-linux-x86_64-libcppstatic.tar.gz
@@ -26,6 +27,7 @@ RUN tar -zxf clustalw-2.1-linux-x86_64-libcppstatic.tar.gz
 #ADD chewBBACA TO PATH 
 ENV PATH="/NGStools/chewBBACA:${PATH}"
 ENV PATH="/NGStools/chewBBACA/utils/:$PATH"
+ENV PATH="/NGStools/prodigal_training_files/:${PATH}"
 
 # add clustalw2 to path
 ENV PATH="/NGStools/clustalw-2.1-linux-x86_64-libcppstatic:${PATH}"
