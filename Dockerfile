@@ -4,7 +4,7 @@ WORKDIR /NGStools/
 RUN apt-get update
 RUN apt-get install psmisc
 #RUN apt-get install -y git make python-dev gcc wget libxml2-dev libxslt1-dev zlib1g-dev g++ build-essential
-RUN apt-get install -y git make python3 python3-pip libatlas-base-dev wget g++ build-essential python3-numpy python3-scipy
+RUN apt-get install -y git make python3 python3-pip libatlas-base-dev wget g++ build-essential
 # python3-numpy python3-scipy
 RUN python3 -m pip install --upgrade pip
 
